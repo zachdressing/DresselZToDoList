@@ -5,7 +5,7 @@
 //On change priority, change priority of object then repopulate.
 let addTskBtn = document.getElementById('addTskBtn');
 
-let taskList =[];
+let taskList = [];
 
 const addTask = () => {
     let priorities = ["low", "med", "high"];
@@ -18,6 +18,7 @@ const addTask = () => {
         console.log(taskList);
         saveLS(task);
         getLS();
+        genList(taskList);
     }
 }
 
@@ -53,36 +54,57 @@ addTskBtn.addEventListener('click', () => { addTask() });
 const genList = (array) => {
     array.map(task => {
         let div1 = document.createElement('div');
-        div1.classList.add("max-w-sm h-fit p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 my-5")
-        
+        let div1Classes = ['max-w-sm', 'h-fit', 'p-6', 'bg-gray-800', 'border', 'border-gray-200', 'rounded-lg', 'shadow', 'my-5'];
+        div1Classes.map(clas => {
+            div1.classList.add(`${clas}`);
+        })
+
         let h5 = document.createElement('h5');
-        h5.classList.add("mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white")
+        let h5Classes = ['mb-2', 'text-2xl', 'font-bold', 'tracking-tight', 'text-white']
+        h5Classes.map(clas => {
+            h5.classList.add(`${clas}`);
+        })
         h5.innerText = `${task.taskName}`;
-        
+
         let p1 = document.createElement('p');
-        p1.classList.add("mb-3 font-normal text-gray-700 dark:text-gray-400")
+        let p1Classes = ['mb-3', 'font-normal', 'text-gray-400']
+        p1Classes.map(clas => {
+            p1.classList.add(`${clas}`);
+        })
         p1.innerText = `${task.taskDesc}`;
 
         let p2 = document.createElement('p');
-        p2.classList.add("mb-3 font-normal text-gray-700 dark:text-gray-400")
+        let p2Classes = ['mb-3', 'font-normal', 'text-gray-400']
+        p2Classes.map(clas => {
+            p2.classList.add(`${clas}`);
+        })
         p2.innerText = `${task.dDate}`;
 
         let p3 = document.createElement('p');
-        p3.classList.add("mb-3 font-normal text-gray-700 dark:text-gray-400")
+        let p3Classes = ['mb-3', 'font-normal', 'text-gray-400']
+        p3Classes.map(clas => {
+            p3.classList.add(`${clas}`);
+        })
         p3.innerText = `${task.status}`;
-        
+
         let btn1 = document.createElement('button');
-        btn1.classList.add("text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800");
-        btn1.innerText = "change Priority"
+        let btn1Classes = ['text-white', 'bg-blue-700', 'hover:bg-blue-800', 'focus:ring-4', 'focus:outline-none', 'focus:ring-blue-300', 'font-medium', 'rounded-lg', 'text-sm', 'px-5', 'py-2.5', 'text-center', 'inline-flex', 'items-center']
+        btn1Classes.map(clas => {
+            btn1.classList.add(`${clas}`);
+        })
+        btn1.innerText = "Change Priority"
         btn1.setAttribute("id", "priorityDDownBtn")
         btn1.setAttribute("data-dropdown-toggle", "priorityDDown");
 
         let svg1 = document.createElement('svg');
-        svg1.classList.add("w-2.5 h-2.5 ms-3");
-        path1.setAttribute("aria-hidden", "true");
-        path1.setAttribute("xmlns", "http://www.w3.org/2000/svg");
-        path1.setAttribute("fill", "none");
-        path1.setAttribute("viewBox", "0 0 10 6");
+        let svg1Classes = ['w-2.5', 'h-2.5', 'ms-3'];
+        svg1Classes.map(clas => {
+            svg1.classList.add(`${clas}`);
+        })
+        svg1.setAttribute("aria-hidden", "true");
+        svg1.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+        svg1.setAttribute("fill", "none");
+        svg1.setAttribute("viewBox", "0 0 10 6");
 
         let path1 = document.createElement('path');
         path1.setAttribute("stroke", "currentColor");
@@ -90,64 +112,86 @@ const genList = (array) => {
         path1.setAttribute("stroke-linejoin", "round");
         path1.setAttribute("stroke-width", "2");
 
-
         let div2 = document.createElement('div');
         div2.setAttribute("id", "priorityDDown");
-        div2.classList.add("z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700");
+        let div2Classes = ['z-10', 'hidden', 'bg-gray-800', 'divide-y', 'divide-gray-100', 'rounded-lg', 'shadow', 'w-44'];
+        div2Classes.map(clas => {
+            div2.classList.add(`${clas}`);
+        })
 
         let ul1 = document.createElement('ul');
         ul1.setAttribute("aria-labelledby", "dropdownDefaultButton");
-        ul1.classList.add("py-2 text-sm text-gray-700 dark:text-gray-200");
+        let ulClasses = ['py-2', 'text-sm', 'text-gray-400']
+        ulClasses.map(clas =>{
+            ul1.classList.add(`${clas}`);
+        })
 
         let li1 = document.createElement('li');
+
         let a1 = document.createElement('a');
+        let a1Classes = ['block', 'px-4', 'py-2', 'hover:bg-gray-100'];
+        a1Classes.map(clas => {
+            a1.classList.add(`${clas}`);
+        })
+        a1.innerText = "to Low";
+
         let li2 = document.createElement('li');
+
         let a2 = document.createElement('a');
+        let a2Classes = ['block', 'px-4', 'py-2', 'hover:bg-gray-100'];
+        a2Classes.map(clas => {
+            a2.classList.add(`${clas}`);
+        })        
+        a2.innerText = "to Med";
+
         let li3 = document.createElement('li');
+
         let a3 = document.createElement('a');
+        let a3Classes = ['block', 'px-4', 'py-2', 'hover:bg-gray-100'];
+        a3Classes.map(clas => {
+            a3.classList.add(`${clas}`);
+        })        
+        a3.innerText = "to High";
+
         let btn2 = document.createElement('button');
-        
+        btn2.setAttribute("type", "button");
+        btn2.setAttribute("id", "removeBtn");
+        let btn2Classes = ['focus:outline-none', 'text-white', 'bg-red-700', 'hover:bg-red-800', 'focus:ring-4', 'focus:ring-red-300', 'font-medium', 'rounded-lg', 'text-sm', 'px-5', 'py-2.5', 'me-2', 'mb-2'];
+        btn2Classes.map(clas => {
+            btn2.classList.add(`${clas}`);
+        })
+        btn2.innerText= "Remove";
 
+        //Dropdown Items
+        li3.appendChild(a3);
+        li2.appendChild(a2);
+        li1.appendChild(a1);
+        ul1.appendChild(li1);
+        ul1.appendChild(li2);
+        ul1.appendChild(li3);
+        div2.appendChild(ul1);
 
-        
+        //Dropdown Change Priority Button
+        svg1.appendChild(path1);
+        btn1.appendChild(svg1);
+
+        //add all to main div
+        div1.appendChild(h5);
+        div1.appendChild(p1);
+        div1.appendChild(p2);
+        div1.appendChild(p3);
+        div1.appendChild(btn1);
+        div1.appendChild(div2);
+        div1.appendChild(btn2);
+        //Check if Low/Med/High and then append there
+        if (task.priority.toLowerCase() == "low") {
+            low.appendChild(div1);
+        }
+        else if (task.priority.toLowerCase() == "med") {
+            med.appendChild(div1);
+        }
+        else {
+            high.appendChild(div1)
+        }
     })
 }
-
-
-//
-
-/*
-div-1<div class="max-w-sm h-fit p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 my-5">
-h5-1    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Example Task</h5>
-p-1    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">This is the description of the task and on on on </p>
-button-1    <button id="priortyDDownBtn" data-dropdown-toggle="priorityDDown" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Change Priority 
-svg-1        <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-path-1        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
-        </svg>
-    </button>
-
-                        <!-- Dropdown menu -->
-div-2   <div id="priorityDDown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-ul-1            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
-li-1                <li>
-a-1                    <a
-                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">to
-                        Low</a>
-                </li>
-li-2                <li>
-a-2                    <a
-                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">to
-                        Medium</a>
-                </li>
-li-3                <li>
-a-3                    <a
-                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">to
-                        High</a>
-                </li>
-            </ul>
-        </div>
-
-button-2        <button type="button" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Remove</button>
-
-                    </div>
-                    */

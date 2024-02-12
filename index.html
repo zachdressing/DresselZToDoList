@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+</head>
+
+<body class="bg-gray-500">
+    <nav class="bg-white border-gray-200 dark:bg-gray-900">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+            <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <img src="https://raw.githubusercontent.com/fabiospampinato/vscode-todo-plus/master/resources/logo/logo.png"
+                    class="h-8" alt="Flowbite Logo" />
+                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">ToDo Tracker</span>
+            </a>
+            <button data-collapse-toggle="navbar-default" type="button"
+                class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                aria-controls="navbar-default" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 17 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M1 1h15M1 7h15M1 13h15" />
+                </svg>
+            </button>
+            <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+                <ul
+                    class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                    <li>
+
+                        <button id="addTaskButton" data-dropdown-toggle="addTaskDDown"
+                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            type="button">Add Task<svg class="w-2.5 h-2.5 ms-3" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m1 1 4 4 4-4" />
+                            </svg>
+                        </button>
+
+                        <!-- Dropdown menu -->
+                        <div id="addTaskDDown"
+                            class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                            <ul class=" flex flex-col justify-center py-2 text-sm text-gray-700 dark:text-gray-200"
+                                aria-labelledby="dropdownDefaultButton">
+                                <li>
+                                    <p
+                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-center">
+                                        Task Name:</p>
+                                    <input id="tskName" type="text" class="w-5/6 ml-[8%] text-black">
+                                </li>
+                                <li>
+                                    <p
+                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-center">
+                                        Task: </p>
+                                    <input id="tskDesc" type="text" class="w-5/6 ml-[8%] text-black">
+                                </li>
+                                <li>
+                                    <p
+                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-center">
+                                        Due Date:</p>
+                                    <input id="dDate" type="text" class="w-5/6 mx-[8%] text-black">
+                                </li>
+                                <li>
+                                    <p
+                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-center">
+                                        Status:</p>
+                                            <input type="text" id="stat" class="w-5/6 mx-[8%] text-black">
+                                </li>
+                                <li>
+                                    <p
+                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-center">
+                                        Priority:</p>
+                                        <input type="text" id="priority" class="w-5/6 mx-[8%] text-black" placeholder="Low/Med/High">
+                                </li>
+
+                                <li class="flex flex-col ml-[5%] mt-[10%]">
+                                    <button id="addTskBtn" type="button"
+                                        class="focus:outline-none text-black bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-small rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900">Add
+                                        Task</button>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="flex justify-center">
+        <div class="container w-full h-[100vh] bg-gray-400 flex flex-row">
+            <div class="w-1/3">
+                <div class="h-24 bg-green-500 flex justify-center items-center">
+                    <h1 class="text-5xl font-black">Low</h1>
+                </div>
+                <div id="low" class="h-5/6 bg-gray-400 flex justify-center">
+                    <div
+                        class="max-w-sm h-fit p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 my-5">
+                        <p>
+                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Example
+                                Task</h5>
+                            </p>
+                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">This is the description of the task
+                            and on on on
+                        </p>
+
+                        <button id="priortyDDownBtn" data-dropdown-toggle="priorityDDown"
+                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            type="button">Change Priority <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m1 1 4 4 4-4" />
+                            </svg>
+                        </button>
+
+                        <!-- Dropdown menu -->
+                        <div id="priorityDDown"
+                            class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                                aria-labelledby="dropdownDefaultButton">
+                                <li>
+                                    <a
+                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">to
+                                        Low</a>
+                                </li>
+                                <li>
+                                    <a
+                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">to
+                                        Medium</a>
+                                </li>
+                                <li>
+                                    <a
+                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">to
+                                        High</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <button type="button" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Remove</button>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="w-1/3">
+                <div class="h-24 bg-yellow-500 flex justify-center items-center">
+                    <h1 class="text-5xl font-black">Medium</h1>
+                </div>
+                <div id="med" class="h-5/6 bg-gray-400 flex justify-center">
+                    <div id="result"></div>
+                </div>
+            </div>
+            <div class="w-1/3">
+                <div class="h-24 bg-red-500 flex justify-center items-center">
+                    <h1 class="text-5xl font-black">High</h1>
+                </div>
+                <div id="high" class="h-5/6 bg-gray-400 flex justify-center"></div>
+            </div>
+        </div>
+    </div>
+
+<script type="module" src="./js/app.js"></script>
+</body>
+
+</html>
